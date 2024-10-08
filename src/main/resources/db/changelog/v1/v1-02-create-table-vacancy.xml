@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                   https://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
+
+    <changeSet id="v1-create-table-vacancy" author="ShentsevA">
+        <createTable tableName="tb_vacancy">
+            <column name="id" type="uuid">
+                <constraints primaryKey="true"/>
+            </column>
+            
+            <column name="position" type="varchar(128)">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="company" type="varchar(128)">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="salary" type="bigint">
+                <constraints nullable="true"/>
+            </column>
+
+            <column name="currency" type="varchar(128)">
+                <constraints nullable="true"/>
+            </column>
+
+            <column name="description" type="varchar(2048)">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="experience" type="varchar(512)">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="grade" type="varchar(128)">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="status" type="varchar(128)">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="publication_date" type="date">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="created_at" type="TIMESTAMP">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="updated_at" type="TIMESTAMP">
+                <constraints nullable="false"/>
+            </column>
+            
+            <column name="hr_id" type="uuid">
+                <constraints nullable="false" foreignKeyName="fk_hr_id" references="tb_hr(id)" deleteCascade="true"/>
+            </column>
+
+        </createTable>
+    </changeSet>
+    
+    <changeSet id="v1-full-data-vacancy" author="ShentsevA">
+        <loadData tableName="tb_vacancy" file="data/vacancy-data.csv"/>
+    </changeSet>
+    
+    <changeSet id="update-vacancy-salary" author="ShentsevA">
+        <update tableName="tb_vacancy">
+            <column name="salary" value="15000"/>
+            <where>id = '9d4f3e5d-7bb1-4903-a7a6-d2750e76dcd2'</where>
+        </update>
+    </changeSet>
+</databaseChangeLog>

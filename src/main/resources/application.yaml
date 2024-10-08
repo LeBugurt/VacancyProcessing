@@ -1,0 +1,19 @@
+spring:
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    url: jdbc:postgresql://localhost:5432/vacancy
+    username: root
+    password: 123
+
+  liquibase:
+    change-log: db/changelog/main-changelog.xml
+
+
+springdoc:
+  api-docs:
+    path: /docs/v3/open-api
+  swagger-ui:
+    path: /docs/swagger-ui.html
+    csrf:
+      enabled: true
+
