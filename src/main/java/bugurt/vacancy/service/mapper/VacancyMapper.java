@@ -38,17 +38,4 @@ public class VacancyMapper {
         vacancyDto.setCity(location.getCity());
         vacancyDto.setRegion(location.getRegion());;
     }
-
-    public VacancyDto SkillsToVacancyDto(List<VacancySkill> skills, VacancyDto vacancyDto) {
-
-        List<String> skillNames = new ArrayList<>();
-
-        for (VacancySkill skill : skills) {
-            skillNames.add(skill.getSkill());
-        }
-
-        vacancyDto.setSkills(skillNames);
-
-        return vacancyDto;
-    }
 }
